@@ -46,22 +46,25 @@ const Index = () => {
     const currentColor = fabricRef.current.backgroundColor as string;
     const currentIndex = BACKGROUND_COLORS.indexOf(currentColor);
     const nextIndex = (currentIndex + 1) % BACKGROUND_COLORS.length;
-    fabricRef.current.setBackgroundColor(
-      BACKGROUND_COLORS[nextIndex],
-      () => fabricRef.current?.renderAll()
-    );
+    fabricRef.current.backgroundColor = BACKGROUND_COLORS[nextIndex];
+    fabricRef.current.renderAll();
   };
 
   const addImage = () => {
     if (!fabricRef.current) return;
     fabric.Image.fromURL(
       "https://images.unsplash.com/photo-1501286353178-1ec871214838",
+      {
+        crossOrigin: 'anonymous'
+      },
       (img) => {
-        img.scaleToHeight(200);
-        img.scaleToWidth(200);
-        fabricRef.current?.add(img);
-        fabricRef.current?.centerObject(img);
-        fabricRef.current?.renderAll();
+        if (img) {
+          img.scaleToHeight(200);
+          img.scaleToWidth(200);
+          fabricRef.current?.add(img);
+          fabricRef.current?.centerObject(img);
+          fabricRef.current?.renderAll();
+        }
       }
     );
   };
