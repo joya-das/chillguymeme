@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { fabric } from "fabric";
+import { Canvas, Image, IText } from "fabric/fabric-impl";
 import { toPng } from "html-to-image";
 import {
   ImageIcon,
@@ -24,12 +24,12 @@ const BACKGROUND_COLORS = [
 
 const Index = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const fabricRef = useRef<fabric.Canvas | null>(null);
+  const fabricRef = useRef<Canvas | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
     if (canvasRef.current) {
-      fabricRef.current = new fabric.Canvas(canvasRef.current, {
+      fabricRef.current = new Canvas(canvasRef.current, {
         width: CANVAS_SIZE,
         height: CANVAS_SIZE,
         backgroundColor: BACKGROUND_COLORS[0],
@@ -54,7 +54,7 @@ const Index = () => {
 
   const addImage = () => {
     if (!fabricRef.current) return;
-    fabric.Image.fromURL(
+    Image.fromURL(
       "https://images.unsplash.com/photo-1501286353178-1ec871214838",
       (img) => {
         img.scaleToHeight(200);
@@ -82,7 +82,7 @@ const Index = () => {
 
   const addText = () => {
     if (!fabricRef.current) return;
-    const text = new fabric.IText("Your Text Here", {
+    const text = new IText("Your Text Here", {
       left: CANVAS_SIZE / 2,
       top: CANVAS_SIZE / 2,
       fontSize: 30,
