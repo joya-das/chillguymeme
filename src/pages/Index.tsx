@@ -53,7 +53,7 @@ const Index = () => {
   const addImage = () => {
     if (!fabricRef.current) return;
     fabric.Image.fromURL(
-      "https://picsum.photos/400/400",
+      "https://just-chill-guy.vercel.app/chillguy.png",
       {
         crossOrigin: 'anonymous'
       },
