@@ -53,7 +53,7 @@ const Index = () => {
   const addImage = () => {
     if (!fabricRef.current) return;
     fabric.Image.fromURL(
-      "https://images.unsplash.com/photo-1501286353178-1ec871214838",
+      "https://picsum.photos/400/400",
       {
         crossOrigin: 'anonymous'
       },
