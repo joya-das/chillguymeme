@@ -52,21 +52,27 @@ const Index = () => {
 
   const addImage = () => {
     if (!fabricRef.current) return;
-    fabric.Image.fromURL(
-      "https://just-chill-guy.vercel.app/chillguy.png",
-      {
-        crossOrigin: 'anonymous'
-      },
-      (img) => {
-        if (img) {
-          img.scaleToHeight(200);
-          img.scaleToWidth(200);
-          fabricRef.current?.add(img);
-          fabricRef.current?.centerObject(img);
-          fabricRef.current?.renderAll();
-        }
-      }
-    );
+
+    const img = new Image();
+    img.crossOrigin = "anonymous";
+    img.src = "https://just-chill-guy.vercel.app/chillguy.png";
+    
+    img.onload = () => {
+      const fabricImage = new fabric.Image(img);
+      fabricImage.scaleToHeight(200);
+      fabricImage.scaleToWidth(200);
+      fabricRef.current?.add(fabricImage);
+      fabricRef.current?.centerObject(fabricImage);
+      fabricRef.current?.renderAll();
+    };
+
+    img.onerror = () => {
+      toast({
+        title: "Error loading image",
+        description: "Failed to load the chill guy image",
+        variant: "destructive",
+      });
+    };
   };
 
   const flipSelected = () => {
