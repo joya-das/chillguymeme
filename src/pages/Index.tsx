@@ -13,13 +13,13 @@ import { useToast } from "@/components/ui/use-toast";
 
 const CANVAS_SIZE = 500;
 const BACKGROUND_COLORS = [
-  "#8d927b",
-  "#a0b0c0",
-  "#c0a0b0",
-  "#b0c0a0",
-  "#a0c0b0",
-  "#b0a0c0",
-  "#c0b0a0",
+  "#1f2937", // dark gray
+  "#374151", // slate
+  "#3f3f46", // zinc
+  "#1e293b", // slate dark
+  "#292524", // stone dark
+  "#312e81", // indigo dark
+  "#312e81", // purple dark
 ];
 
 const Index = () => {
@@ -140,57 +140,57 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-xl p-8">
+    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-4">
+      <div className="bg-card rounded-lg shadow-xl p-8">
         <canvas ref={canvasRef} className="rounded-lg shadow-md" />
         
         <div className="flex justify-center gap-4 mt-6">
           <button
             onClick={changeBackground}
-            className="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-card shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
             title="Change background color"
           >
-            <Palette className="w-6 h-6 text-gray-600" />
+            <Palette className="w-6 h-6 text-foreground" />
           </button>
           
           <button
             onClick={addImage}
-            className="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-card shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
             title="Add image"
           >
-            <ImageIcon className="w-6 h-6 text-gray-600" />
+            <ImageIcon className="w-6 h-6 text-foreground" />
           </button>
           
           <button
             onClick={flipSelected}
-            className="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-card shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
             title="Flip selected object"
           >
-            <FlipHorizontal className="w-6 h-6 text-gray-600" />
+            <FlipHorizontal className="w-6 h-6 text-foreground" />
           </button>
           
           <button
             onClick={addText}
-            className="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-card shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
             title="Add text"
           >
-            <Type className="w-6 h-6 text-gray-600" />
+            <Type className="w-6 h-6 text-foreground" />
           </button>
           
           <button
             onClick={deleteSelected}
-            className="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-card shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
             title="Delete selected object"
           >
-            <Trash2 className="w-6 h-6 text-gray-600" />
+            <Trash2 className="w-6 h-6 text-foreground" />
           </button>
           
           <button
             onClick={downloadCanvas}
-            className="w-12 h-12 rounded-full bg-white shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
+            className="w-12 h-12 rounded-full bg-card shadow-md hover:shadow-lg transition-shadow flex items-center justify-center"
             title="Download canvas"
           >
-            <Download className="w-6 h-6 text-gray-600" />
+            <Download className="w-6 h-6 text-foreground" />
           </button>
         </div>
       </div>
